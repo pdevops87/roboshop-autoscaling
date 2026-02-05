@@ -16,7 +16,7 @@ resource "aws_launch_template" "lt" {
 resource "aws_autoscaling_group" "bar" {
   name                      = "${var.env}-${var.component}"
   max_size                  = 5
-  min_size                  = 1
+  min_size                  = 2
   availability_zones = ["us-east-1a","us-east-1b"]
   launch_template {
     id      = aws_launch_template.lt.id
