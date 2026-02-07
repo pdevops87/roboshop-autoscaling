@@ -21,7 +21,7 @@ resource "aws_autoscaling_group" "bar" {
   load_balancers = [aws_lb.lb.id]
   target_group_arns = [aws_lb_target_group.tg.arn]
   launch_template {
-    id      = aws_launch_template.lt.id
+    name = aws_launch_template.lt.name
     version = "$Latest"
   }
    tag {
