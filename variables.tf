@@ -13,3 +13,6 @@ variable "sg" {
 variable "subnet_id" {
   default = "subnet-0e4eadfc446b55f58"
 }
+variable "vpc_id" {
+  default = "vpc-02a94ee8944923438"
+}
