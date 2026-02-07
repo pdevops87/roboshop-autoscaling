@@ -4,8 +4,7 @@ resource "aws_launch_template" "lt" {
   image_id =var.ami
   instance_type = "t2.micro"
    tag_specifications {
-    resource_type = var.component
-
+    resource_type = aws_launch_template.lt.name
     tags = {
       Name = "${var.env}-${var.component}"
     }
