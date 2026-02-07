@@ -18,7 +18,7 @@ resource "aws_autoscaling_group" "bar" {
   max_size                  = 5
   min_size                  = 2
   availability_zones = ["us-east-1a","us-east-1b"]
-  load_balancers = [aws_lb.lb.id]
+  load_balancers = [aws_lb.lb.name]
   target_group_arns = [aws_lb_target_group.tg.arn]
   launch_template {
     name = aws_launch_template.lt.name
