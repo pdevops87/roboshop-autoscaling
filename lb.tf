@@ -4,7 +4,7 @@ resource "aws_lb" "lb" {
   load_balancer_type = "application"
   security_groups    = [var.sg]
 
-  subnets            = [var.subnet_id]
+  subnets            = ["subnet-04ce96f612c9d802d","subnet-0e4eadfc446b55f58"]
    tags = {
     Name = "${var.env}-${var.component}-lb"
   }

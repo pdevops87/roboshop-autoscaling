@@ -1,6 +1,6 @@
 // create a launch template
 resource "aws_launch_template" "lt" {
-  name = "${var.env}-${var.component}"
+  name = var.component
   image_id =var.ami
   instance_type = "t2.micro"
    tag_specifications {
@@ -14,6 +14,7 @@ resource "aws_launch_template" "lt" {
 }
 
 resource "aws_autoscaling_group" "bar" {
+  depends_on = [aws_launch_template.lt,aws_lb.lb]
   name                      = "${var.env}-${var.component}"
   max_size                  = 5
   min_size                  = 2
