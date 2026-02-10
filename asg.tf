@@ -10,13 +10,14 @@ resource "aws_launch_template" "lt" {
       Name = each.key
     }
   }
-#   user_data = templatefile("${path.module}/user-data.sh", {
-#     component    = each.key
-#     env          = var.env
-#   })
+  user_data = templatefile("${path.module}/user-data.sh", {
+    component    = each.key
+    env          = var.env
+  })
 }
 
 resource "aws_autoscaling_group" "asg" {
+  depends_on = [aws_lb_target_group.tg]
   for_each = var.app_components
   name     = "${var.env}-asg"
   desired_capacity = each.value["asg"]["min"]
