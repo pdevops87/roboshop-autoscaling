@@ -16,17 +16,21 @@ resource "aws_launch_template" "lt" {
 #   })
 }
 
-# resource "aws_autoscaling_group" "asg" {
-#   name                      = "${var.env}-asg"
-#   max_size                  = 5
-#   min_size                  = 1
-#   availability_zones = ["us-east-1a","us-east-1b"]
-#   launch_template {
-#     name = aws_launch_template.lt.name
-#     version = "$Latest"
-#   }
-#   tag {
-#     key                 = "${var.env}-${var.component}"
-#     value               = "${var.env}-${var.component}"
-#     propagate_at_launch = true
-#   }
+resource "aws_autoscaling_group" "asg" {
+  for_each = var.app_components
+  name     = "${var.env}-asg"
+  desired_capacity = each.value["asg"]["min"]
+  max_size =  each.value["asg"]["max"]
+  min_size = each.value["asg"]["min"]
+  availability_zones = ["us-east-1a", "us-east-1b"]
+  launch_template {
+    name    = aws_launch_template.lt.name
+    version = "$Latest"
+  }
+  tag {
+    key                 = "${var.env}-${var.app_components}"
+    value               = "${var.env}-${var.app_components}"
+    propagate_at_launch = true
+  }
+}
+
