@@ -10,3 +10,4 @@ variable "vpc_id" {}
 
 variable "db_components" {}
 variable "zone_id" {}
+variable "app_components" {}

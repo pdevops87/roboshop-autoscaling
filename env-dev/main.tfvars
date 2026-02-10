@@ -5,6 +5,19 @@ db_components = {
     }
   }
 
+app_components = {
+  frontend = {
+    ports = { ssh = 22, app = 80 }
+    instance_type = "t2.micro"
+  }
+}
+
+asg = {
+  default = {
+
+  }
+}
+
 env= "dev"
 ami = "ami-0220d79f3f480ecf5"
 subnet_id = ["subnet-0e4eadfc446b55f58"]
