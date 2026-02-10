@@ -1,4 +1,4 @@
-resource "aws_security_group" "db_sg" {
+resource "aws_security_group" "sg" {
   for_each = var.db_components
   name = "${each.key}-${var.env}"
   vpc_id = "vpc-02a94ee8944923438"

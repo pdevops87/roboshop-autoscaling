@@ -1,8 +1,9 @@
 # resource "aws_lb" "lb" {
-#   name               = "${var.env}-${var.component}-lb"
+#   for_each           = var.app_components
+#   name               = "${each.key}-${var.env}-lb"
 #   internal           = false // public
 #   load_balancer_type = "application"
-#   security_groups    = [var.sg]
+#   security_groups = [aws_security_group.app_sg[each.key].id]
 #
 #   subnets            = ["subnet-04ce96f612c9d802d","subnet-0e4eadfc446b55f58"]
 #    tags = {
