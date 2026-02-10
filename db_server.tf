@@ -18,5 +18,6 @@ resource "aws_route53_record" "db_records" {
   name    = "${each.key}-${var.env}"
   type    = "A"
   zone_id = var.zone_id
+  ttl = 30
   records = [aws_instance.db_servers[each.key].private_ip]
 }
