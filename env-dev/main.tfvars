@@ -13,8 +13,6 @@ app_components = {
   }
 }
 
-
-
 env= "dev"
 ami = "ami-0220d79f3f480ecf5"
 subnet_id = ["subnet-0e4eadfc446b55f58"]
