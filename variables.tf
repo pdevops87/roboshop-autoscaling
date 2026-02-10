@@ -1,10 +1,11 @@
 variable "env"{
   default="dev"
 }
-variable "db_components" {
+
+db_components = {
   mongodb = {
      ports = { ssh=22 , app= 27017 }
-    instance_type = "t3.micro"
+     instance_type = "t3.micro"
   }
   redis = {
     ports = { ssh=22 , app=6379 }
@@ -19,6 +20,7 @@ variable "db_components" {
     instance_type = "t3.micro"
   }
 }
+variable "db_components" {}
 variable "ami" {
   default = "ami-0220d79f3f480ecf5"
 }
