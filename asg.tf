@@ -1,4 +1,5 @@
 resource "aws_launch_template" "lt" {
+  depends_on = [aws_security_group.app_sg]
   for_each = var.app_components
   name = "${each.key}-${var.env}"
   image_id =var.ami
@@ -17,7 +18,7 @@ resource "aws_launch_template" "lt" {
 }
 
 resource "aws_autoscaling_group" "asg" {
-  depends_on = [aws_lb_target_group.tg]
+  depends_on = [aws_launch_template.lt,aws_lb_target_group.tg]
   for_each = var.app_components
   name     = "${var.env}-asg"
   desired_capacity = each.value["asg"]["min"]
