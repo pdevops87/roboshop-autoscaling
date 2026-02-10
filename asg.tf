@@ -19,7 +19,7 @@ resource "aws_launch_template" "lt" {
 resource "aws_autoscaling_group" "asg" {
   depends_on = [aws_launch_template.lt,aws_lb_target_group.tg]
   for_each = var.app_components
-  name     = "${var.env}-asg"
+  name     = "${each.key}-${var.env}-asg"
   desired_capacity = each.value["asg"]["min"]
   max_size =  each.value["asg"]["max"]
   min_size = each.value["asg"]["min"]
