@@ -11,3 +11,12 @@ resource "aws_instance" "db_servers" {
     Name = "${each.key}-${var.env}"
   }
 }
+
+
+resource "aws_route53_record" "db_records" {
+  for_each = var.db_components
+  name    = "${each.key}-${var.env}"
+  type    = "A"
+  zone_id = var.zone_id
+  records = [aws_instance.db_servers[each.key].private_ip]
+}
