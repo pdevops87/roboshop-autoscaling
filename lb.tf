@@ -17,3 +17,14 @@ resource "aws_lb_target_group" "tg" {
   vpc_id   = var.vpc_id
   target_type = "instance"
 }
+
+resource "aws_lb_listener" "listener_ports" {
+  for_each = var.app_components
+  load_balancer_arn = aws_lb.lb[each.key].arn
+  port              = each.value["ports"]["app"]
+  protocol          = "HTTP"
+  default_action {
+    type             = "forward"
+    target_group_arn = aws_lb_target_group.tg[each.key].arn
+  }
+}
