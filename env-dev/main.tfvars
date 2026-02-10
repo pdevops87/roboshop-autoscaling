@@ -1,7 +1,7 @@
 db_components = {
     mongodb = {
       ports = { ssh = 22, app = 27017 }
-      instance_type = "t2.micro"
+      instance_type = "t3.micro"
     }
   }
 
