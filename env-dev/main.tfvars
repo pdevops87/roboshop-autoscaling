@@ -3,18 +3,6 @@ db_components = {
       ports = { ssh = 22, app = 27017 }
       instance_type = "t2.micro"
     }
-#     redis = {
-#       ports = { ssh = 22, app = 6379 }
-#       instance_type = "t2.micro"
-#     }
-#     mysql = {
-#       ports = { ssh = 22, app = 3306 }
-#       instance_type = "t2.micro"
-#     }
-#     rabbitmq = {
-#       ports = { ssh = 22, app = 5672 }
-#       instance_type = "t2.micro"
-#     }
   }
 
 env= "dev"
