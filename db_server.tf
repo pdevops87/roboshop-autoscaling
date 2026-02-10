@@ -3,7 +3,7 @@ resource "aws_instance" "db_servers" {
   ami              =  var.ami
   instance_type    = each.value["instance_type"]
   security_groups  = [aws_security_group.sg[each.key].id]
-  user_data        = base64encode(templatefile("${path.module}/user-data.sh", {
+  user_data_base64 = base64encode(templatefile("${path.module}/user-data.sh", {
     component      = each.key
     env            = var.env
   }))
