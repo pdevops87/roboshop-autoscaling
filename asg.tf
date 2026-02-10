@@ -28,8 +28,8 @@ resource "aws_autoscaling_group" "asg" {
     version = "$Latest"
   }
   tag {
-    key                 = "${var.env}-${var.app_components}"
-    value               = "${var.env}-${var.app_components}"
+    key                 = "${var.env}-${each.key}"
+    value               = "${var.env}-${each.key}"
     propagate_at_launch = true
   }
 }
