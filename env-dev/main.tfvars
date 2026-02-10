@@ -3,6 +3,18 @@ db_components = {
       ports = { ssh = 22, app = 27017 }
       instance_type = "t3.micro"
     }
+  redis = {
+    ports = { ssh = 22, app = 6379 }
+    instance_type = "t3.micro"
+  }
+  mysql = {
+    ports = { ssh = 22, app = 3306 }
+    instance_type = "t3.micro"
+  }
+  rabbitmq = {
+    ports = { ssh = 22, app = 5672 }
+    instance_type = "t3.micro"
+  }
   }
 
 app_components = {
@@ -10,6 +22,31 @@ app_components = {
     ports = { ssh = 22, app = 80 }
     asg = { min=1 , max=5 }
     instance_type = "t2.micro"
+  }
+  catalogue = {
+    ports = { ssh = 22, app = 8080 }
+    asg = { min=1 , max=5 }
+    instance_type = "t3.micro"
+  }
+  user = {
+    ports = { ssh = 22, app = 8080 }
+    asg = { min=1 , max=5 }
+    instance_type = "t3.micro"
+  }
+  cart = {
+    ports = { ssh = 22, app = 8080 }
+    asg = { min=1 , max=5 }
+    instance_type = "t3.micro"
+  }
+  shipping = {
+    ports = { ssh = 22, app = 8080 }
+    asg = { min=1 , max=5 }
+    instance_type = "t3.micro"
+  }
+  payment = {
+    ports = { ssh = 22, app = 8080 }
+    asg = { min=1 , max=5 }
+    instance_type = "t3.micro"
   }
 }
 
