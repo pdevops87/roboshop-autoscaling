@@ -265,3 +265,20 @@ Choose a target group and specify routing weight or create target group .
 
 
 
+userdata+provisioner:
+======================
+Create Resource 1 (Frontend)
+├─ Instance boots
+│   └─ User data runs (install packages)
+└─ Terraform connects
+└─ Provisioner runs (start Nginx, health check)
+
+Create Resource 2 (Backend)
+├─ Instance boots
+│   └─ User data runs (install packages)
+└─ Terraform connects
+└─ Provisioner runs (start Redis, health check)
+
+
+
+
