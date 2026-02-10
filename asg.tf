@@ -24,7 +24,7 @@ resource "aws_autoscaling_group" "asg" {
   min_size = each.value["asg"]["min"]
   availability_zones = ["us-east-1a", "us-east-1b"]
   launch_template {
-    name    = aws_launch_template.lt.name
+    name    = aws_launch_template.lt[each.key].name
     version = "$Latest"
   }
   tag {
