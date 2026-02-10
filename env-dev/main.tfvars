@@ -8,15 +8,12 @@ db_components = {
 app_components = {
   frontend = {
     ports = { ssh = 22, app = 80 }
+    asg = { min=1 , max=5 }
     instance_type = "t2.micro"
   }
 }
 
-asg = {
-  default = {
 
-  }
-}
 
 env= "dev"
 ami = "ami-0220d79f3f480ecf5"

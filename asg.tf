@@ -30,4 +30,3 @@ resource "aws_launch_template" "lt" {
 #     value               = "${var.env}-${var.component}"
 #     propagate_at_launch = true
 #   }
-}
