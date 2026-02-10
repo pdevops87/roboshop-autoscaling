@@ -1,4 +1,5 @@
 resource "aws_instance" "db_servers" {
+  depends_on       = [aws_security_group.sg]
   for_each         =  var.db_components
   ami              =  var.ami
   instance_type    = each.value["instance_type"]

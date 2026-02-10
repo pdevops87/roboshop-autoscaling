@@ -12,6 +12,12 @@ resource "aws_security_group" "sg" {
       description = ingress.key
     }
   }
+  egress {
+    from_port = 0
+    to_port   = 0
+    cidr_blocks = ["0.0.0.0/0"]
+    protocol  = "-1"
+  }
   tags = {
     Name = "${var.env}-${each.key}"
   }
