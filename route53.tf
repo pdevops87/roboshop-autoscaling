@@ -1,5 +1,4 @@
 resource "aws_route53_record" "app_records" {
-  depends_on = [aws_lb.lb]
   for_each = var.app_components
   name    = "${each.key}-${var.env}"
   type    = "CNAME"
