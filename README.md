@@ -288,5 +288,44 @@ If the target responds successfully for the required number of consecutive check
 * Interval = 30 seconds
 * Healthy threshold = 3
 
+structured flow:
+================
+to run prioritize , based on this we have to write depends_on=[]
+Launch Template
+└─ Includes Cloud-init/User Data → bootstrap EC2 instances automatically
+|
+v
+Auto Scaling Group (ASG)
+└─ Launches EC2 instances using Launch Template
+|
+v
+EC2 Instances (configured by Cloud-init)
+└─ Register with Target Group
+|
+v
+Target Group (healthy instances only)
+|
+v
+Load Balancer (ALB/NLB)
+|
+v
+Route 53 (DNS)
+|
+v
+Users
+
+
+here 
+1. Launch template
+2. asg with launch template
+3. ec2 instances with cloud-init(user data)
+4. target group(register target group healthy/unhealthy is attach by asg)
+5. LB
+6. route53
+7. end user
+
+here asg depends on route53 because asg is created an instances so once we get route53 dns then only asg will create an instance
+in user-data dns records required.
+
 
 

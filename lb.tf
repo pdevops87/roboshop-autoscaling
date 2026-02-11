@@ -12,7 +12,7 @@ resource "aws_lb" "lb" {
 resource "aws_lb_target_group" "tg" {
   for_each           = var.app_components
   name     = "${var.env}-${each.key}-tg"
-  port     = 80
+  port     = each.value["ports"]["app"]
   protocol = "HTTP"
   vpc_id   = var.vpc_id
   target_type = "instance"
