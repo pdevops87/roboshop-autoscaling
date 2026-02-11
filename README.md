@@ -280,5 +280,13 @@ Create Resource 2 (Backend)
 └─ Provisioner runs (start Redis, health check)
 
 
+Health check = Load balancer periodically sends a request (like GET /health) to each registered target.
+If the target responds successfully for the required number of consecutive checks, it becomes Healthy.
+
+“Consecutive checks” means:
+============================
+* Interval = 30 seconds
+* Healthy threshold = 3
+
 
 
