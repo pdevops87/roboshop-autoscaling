@@ -328,4 +328,18 @@ here asg depends on route53 because asg is created an instances so once we get r
 in user-data dns records required.
 
 
+asg:
+====
+* if there are any changes in user-data:
+suppose nginx version has been changed or someother then no need to terminate instance in ec2 
+* in asg , there is an option "instance refresh" click on start "instance refresh" then under skip matching option
+disable "Enable skip matching" and click on start "instance refresh" button.
+
+
+
+golden ami:
+===========
+
+
+
 

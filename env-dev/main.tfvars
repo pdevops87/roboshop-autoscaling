@@ -51,7 +51,7 @@ app_components = {
 }
 
 env= "dev"
-ami = "ami-0220d79f3f480ecf5"
+ami = "ami-047ddf79c957b665c"  // roboshop golden image ami
 subnet_id = ["subnet-0e4eadfc446b55f58"]
 vpc_id="vpc-02a94ee8944923438"
 zone_id="Z08520602FC482APPVUI7"
